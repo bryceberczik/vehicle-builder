@@ -260,7 +260,7 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          []
+          [new Wheel(answers.frontWheelDiameter, answers.frontWheelBrand), new Wheel(answers.rearWheelDiameter, answers.rearWheelBrand)]
         );
         this.vehicles.push(motorbike);
         this.selectedVehicleVin = motorbike.vin;
@@ -346,7 +346,16 @@ class Cli {
           // find the selected vehicle and accelerate it by 5 MPH
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
-              this.vehicles[i].accelerate(5);
+              // Check if the vehicle has a topSpeed property
+              if ('topSpeed' in this.vehicles[i]) {
+                if (this.vehicles[i].currentSpeed >= this.vehicles[i].topSpeed) {
+                  console.log('You have reached the top speed');
+                } else {
+                  this.vehicles[i].accelerate(5);
+                }
+              } else {
+                this.vehicles[i].accelerate(5);
+              }
             }
           }
         } else if (answers.action === 'Decelerate 5 MPH') {
@@ -384,19 +393,24 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
-        } else if (answers.action === 'Tow a vehicle') {
-          // find the selected vehicle and tow another vehicle
+        } 
+        // else if (answers.action === 'Tow a vehicle') {
+        //   // find the selected vehicle and tow another vehicle
+        //   for (let i = 0; i < this.vehicles.length; i++) {
+        //     if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
+        //       this.vehicles[i].tow();
+        //     }
+        //   }
+        // } 
+        else if (answers.action === 'Perform a wheelie') {
+          // find the selected vehicle and perform a wheelie if it's a motorbike
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
-              this.tow(this.vehicles[i] as Truck);
-              return; // avoid instantly calling performActions again
-            }
-          }
-        } else if (answers.action === 'Perform a wheelie') {
-          // find the selected vehicle and perform a wheelie
-          for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
-              this.vehicles[i].wheelie();
+            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (this.vehicles[i] instanceof Motorbike) {
+                this.vehicles[i].wheelie();
+              } else {
+                console.log('Only a motorbike can do a wheelie');
+              }
             }
           }
         } else if (answers.action === 'Select or create another vehicle') {

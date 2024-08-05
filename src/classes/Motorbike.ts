@@ -11,14 +11,14 @@ class Motorbike extends Vehicle {
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, and wheels
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[])
 
-  public vin: string;
-  private color: string;
-  private make: string;
-  private model: string;
-  private year: number;
-  private weight: number;
-  private topSpeed: number;
-  private wheels: Wheel[];
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  topSpeed: number;
+  wheels: Wheel[];
 
   // TODO: Create a constructor that accepts the properties of the Motorbike class
   // TODO: The constructor should call the constructor of the parent class, Vehicle
@@ -55,11 +55,11 @@ class Motorbike extends Vehicle {
   // TODO: Implement the wheelie method
   // TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
 
-  wheelie(vehicle: Motorbike): string {
+  wheelie(): string {
 
     const message = `Motorbike ${this.make} ${this.model} is doing a wheelie!`;
     console.log(message);
-    return message
+    return message;
   }
 
   // TODO: Override the printDetails method from the Vehicle class
@@ -78,7 +78,9 @@ class Motorbike extends Vehicle {
     console.log(`Weight: ${this.weight}`);
     console.log(`Top Speed: ${this.topSpeed}`);
     console.log(`Color: ${this.color}`);
-    console.log(`Wheels: ${this.wheels.length}`);
+    
+    // console log the wheels
+    
   }
 }
 
