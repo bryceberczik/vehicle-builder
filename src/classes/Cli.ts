@@ -299,6 +299,7 @@ class Cli {
           this.performActions();
         }
       });
+
   }
 
   // method to perform actions on a vehicle
@@ -393,16 +394,15 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
-        } 
-        // else if (answers.action === 'Tow a vehicle') {
-        //   // find the selected vehicle and tow another vehicle
-        //   for (let i = 0; i < this.vehicles.length; i++) {
-        //     if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
-        //       this.vehicles[i].tow();
-        //     }
-        //   }
-        // } 
-        else if (answers.action === 'Perform a wheelie') {
+        } else if (answers.action === 'Tow a vehicle') {
+          for (let i = 0; i < this.vehicles.length; i++) {
+            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (this.vehicles[i] instanceof Truck) {
+                this.vehicles[i].findVehicleToTow();
+              }
+            }
+          }
+        } else if (answers.action === 'Perform a wheelie') {
           // find the selected vehicle and perform a wheelie if it's a motorbike
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
