@@ -395,13 +395,26 @@ class Cli {
             }
           }
         } else if (answers.action === 'Tow a vehicle') {
+          let truck: Truck | undefined;
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               if (this.vehicles[i] instanceof Truck) {
-                this.vehicles[i].findVehicleToTow();
+                truck = this.vehicles[i] as Truck;
+
               }
             }
           }
+          if (truck) {
+            console.log('running function');
+            
+            this.findVehicleToTow(truck);
+            return
+          } else {
+
+            console.log('This interaction is only avalable to trucks');
+
+          }
+
         } else if (answers.action === 'Perform a wheelie') {
           // find the selected vehicle and perform a wheelie if it's a motorbike
           for (let i = 0; i < this.vehicles.length; i++) {
