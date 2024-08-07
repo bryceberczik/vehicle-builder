@@ -57,13 +57,6 @@ class Truck extends Vehicle implements AbleToTow {
     }
   }
 
-  wheelie(): string {
-
-    const message = `Motorbike ${this.make} ${this.model} is doing a wheelie!`;
-    console.log(message);
-    return message;
-  }
-
   // TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
 

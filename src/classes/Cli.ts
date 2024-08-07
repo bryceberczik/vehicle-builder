@@ -415,16 +415,23 @@ class Cli {
 
           }
 
-        } else if (answers.action === 'Perform a wheelie') {
-          // find the selected vehicle and perform a wheelie if it's a motorbike
+        } else if (answers.action === "Perform a wheelie") {
+          let motorbike: Motorbike | undefined;
+          console.log(this.selectedVehicleVin);
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
-              if (this.vehicles[i] instanceof Motorbike) {
-                this.vehicles[i].wheelie();
-              } else {
-                console.log('Only a motorbike can do a wheelie');
-              }
+            if(
+            this.vehicles[i].vin === this.selectedVehicleVin &&
+              this.vehicles[i] instanceof Motorbike)
+            {
+              motorbike = this.vehicles[i] as Motorbike;
             }
+          }
+          if (motorbike) {
+            console.log(motorbike);
+            motorbike.wheelie();
+            return
+          } else {
+            console.log("Only motorbikes can perform wheelies");
           }
         } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle

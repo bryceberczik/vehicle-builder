@@ -45,14 +45,7 @@ class Car extends Vehicle {
       this.wheels = wheels;
     }
   }
-
-  wheelie(): string {
-
-    const message = `Motorbike ${this.make} ${this.model} is doing a wheelie!`;
-    console.log(message);
-    return message;
-  }
-
+  
   // Override the printDetails method from the Vehicle class
   override printDetails(): void {
     // Call the printDetails method of the parent class, Vehicle
