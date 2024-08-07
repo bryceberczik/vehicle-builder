@@ -405,7 +405,6 @@ class Cli {
             }
           }
           if (truck) {
-            console.log('running function');
             
             this.findVehicleToTow(truck);
             return
