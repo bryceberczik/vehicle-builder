@@ -417,7 +417,6 @@ class Cli {
 
         } else if (answers.action === "Perform a wheelie") {
           let motorbike: Motorbike | undefined;
-          console.log(this.selectedVehicleVin);
           for (let i = 0; i < this.vehicles.length; i++) {
             if(
             this.vehicles[i].vin === this.selectedVehicleVin &&
@@ -427,9 +426,8 @@ class Cli {
             }
           }
           if (motorbike) {
-            console.log(motorbike);
             motorbike.wheelie();
-            return
+
           } else {
             console.log("Only motorbikes can perform wheelies");
           }
