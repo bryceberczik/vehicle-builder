@@ -26,7 +26,7 @@ In order to run the application, you must right click on the index.ts and run th
 
 
 
-Uploading running vehicle-builder.mov…
+https://github.com/user-attachments/assets/5e0800f0-2ce9-48ae-8064-8f4d6ff877a9
 
 
 
